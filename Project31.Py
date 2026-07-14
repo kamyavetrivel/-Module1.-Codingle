@@ -1,20 +1,20 @@
-import requests
+def check_sentiment(text):
+    text = text.lower()
 
-url = "https://uselessfacts.jsph.pl/api/v2/facts/random"
+    if "good" in text or "happy" in text or "love" in text:
+        print("Sentiment = Positive")
 
-def get_fact():
-    response = requests.get(url)
+    elif "bad" in text or "sad" in text or "hate" in text:
+        print("Sentiment = Negative")
 
-    if response.status_code == 200:
-        data = response.json()
-        print(data["text"])
     else:
-        print("Failed to get fact")
+        print("Sentiment = Neutral")
+
 
 while True:
-    answer = input("Press Enter for a fact or q to quit: ")
+    user_input = input("Enter a sentence or type 'q' to quit: ")
 
-    if answer.lower() == "q":
+    if user_input.lower() == "q":
         break
 
-    get_fact()
+    check_sentiment(user_input)
